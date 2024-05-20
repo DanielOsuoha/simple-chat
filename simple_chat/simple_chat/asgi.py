@@ -15,7 +15,9 @@ from channels.routing import ProtocolTypeRouter
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "simple_chat.settings")
 
 application = get_asgi_application()
-application = ProtocolTypeRouter({
-    "http": django_asgi_app,
+application = ProtocolTypeRouter(
+    {
+    "http": get_asgi_application(),
     # Just HTTP for now. (We can add other protocols later.)
-})
+}
+    )
